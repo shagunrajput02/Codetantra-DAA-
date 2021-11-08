@@ -1,0 +1,78 @@
+#include<stdio.h>
+void merge(int arr[],int min,int mid,int max)
+{
+	int tmp[30];
+	int i,j,k,m;
+	j=min;
+	m=mid+1;
+	for(i=min;j<=mid && m<=max;i++)
+	{
+		if(arr[j]<=arr[m])
+		{
+			tmp[i]=arr[j];
+			j++;
+		}
+		else
+		{
+			tmp[i]=arr[m];
+			m++;
+			
+		}
+		
+	}
+	if(j>mid)
+	{
+		for (k=m;k<=max;k++)
+		{
+			tmp[i]=arr[k];
+			i++;
+			
+		}
+		
+	}
+	else
+	{
+		for(k=j;k<=mid;k++)
+		{
+			tmp[i]=arr[k];
+			i++;
+		}
+	}
+	for (k=min;k<=max;k++)
+	arr[k]=tmp[k];
+}
+void sortm(int arr[],int min,int max)
+{
+	int mid;
+	if(min<max)
+	{
+		mid=(min+max)/2;
+		sortm(arr,min,mid);
+		sortm(arr,mid+1,max);
+		merge(arr,min,mid,max);
+	}
+}
+int main()
+{
+	int arr[30];
+	int i,size;
+	printf(" Enter How many Numbers : ");
+	scanf("%d",&size);
+	printf(" Enter %d Numbers :",size);
+	for(i=0;i<size;i++)
+	{
+		scanf("%d",&arr[i]);
+	}
+	sortm(arr,0,size-1);
+	printf(" Sorted Numbers are : ");
+	for(i=0;i<size;i++)
+	if(arr[i]<0)
+	{
+		printf("%5d",arr[i]);
+	}
+	else
+	{
+		printf("%5d",arr[i]);
+	}
+	return 0;
+}
