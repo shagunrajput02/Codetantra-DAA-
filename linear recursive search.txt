@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<conio.h>
+
+void main()
+{
+	int a[25],i,n,m,flag=1;
+	printf("enter the no of elements: ");
+	scanf("%d",&n);
+	printf("Enter %d integer(s)\n",n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	printf("enter the item to be search: ");
+	scanf("%d",&m);
+	for(i=0;i<n;i++)
+	{
+		if(m == a[i])
+		{
+			printf("item location = %d  item = %d",i+1,m);
+			flag = 0;
+			break;
+		}
+	}
+	if(flag == 1)
+	{
+		printf("no item found");
+	}
+}
